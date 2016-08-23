@@ -205,3 +205,4 @@ fabric.properties
 
 ### Git ###
 *.orig
+.idea/
