@@ -206,3 +206,7 @@ fabric.properties
 ### Git ###
 *.orig
 .idea/
+
+
+### pip ###
+pip/
