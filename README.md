@@ -1,4 +1,4 @@
 # Installation
 ```shell
-pip -r requirements.txt --target ./pip/
+pip -r requirements.txt --target ./lib/
 ```
