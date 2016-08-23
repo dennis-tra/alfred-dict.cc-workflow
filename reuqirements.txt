@@ -1,2 +1,0 @@
-BeautifulSoup==3.2.0
-Alfred-Workflow==1.19

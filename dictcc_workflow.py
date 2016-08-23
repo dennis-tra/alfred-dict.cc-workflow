@@ -3,13 +3,9 @@
 
 import sys
 
-from lib.workflow import Workflow
+from workflow import Workflow
+from dictcc import Dict, AVAILABLE_LANGUAGES
 
-# from dictcc import Dict, AVAILABLE_LANGUAGES
-
-
-def printer():
-    print("TESTE")
 
 def main(wf):
 
