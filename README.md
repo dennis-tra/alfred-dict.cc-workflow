@@ -4,7 +4,7 @@
 
 If you like this workflow give this repo a star ⭐
 
-![Exmple animation][https://dl.dropboxusercontent.com/u/48105952/alfred-dict.cc-example.gif]
+![Exmple animation](https://dl.dropboxusercontent.com/u/48105952/alfred-dict.cc-example.gif)
 
 
 ### Supported Languages
