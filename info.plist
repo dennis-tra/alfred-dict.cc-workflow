@@ -82,7 +82,7 @@
 				<string>Please wait...</string>
 				<key>script</key>
 				<string>QUERY=$(iconv -f UTF8-MAC &lt;&lt;&lt;'{query}')
-/usr/bin/python index.py $QUERY</string>
+/usr/bin/python dictcc_workflow.py $QUERY</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
