@@ -3,13 +3,14 @@
 
 import sys
 
+from dictcc_argument_parser import ArgumentParser
 from workflow import Workflow
 from dictcc import Dict, AVAILABLE_LANGUAGES
 
 
 def main(wf):
 
-    args = wf.args
+    parser = ArgumentParser(wf.args)
 
     wf.send_feedback()
 
