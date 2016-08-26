@@ -31,5 +31,5 @@ Possible values for `$lang1` and `$lang2`:
 | pt, por | portuguese |
 | ru, rus | russian |
 
-## Attributions
+## Acknowledgement
 The dict.cc website parser is based on [rbarons](https://github.com/rbaron/dict.cc.py) work. Thanks for that!
