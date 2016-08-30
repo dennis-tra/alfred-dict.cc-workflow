@@ -1,4 +1,4 @@
-## Alfred dict.cc workflow
+# Alfred dict.cc workflow
 
 [Alfred](https://www.alfredapp.com/) workflow to get translations from [dict.cc](http//dict.cc).
 
@@ -7,10 +7,10 @@ If you like this workflow give this repo a star ⭐
 ![Exmple animation](https://dl.dropboxusercontent.com/u/48105952/alfred-dict.cc-example.gif)
 
 
-### Supported Languages
+## Supported Languages
 English, German, French, Swedish, Spanish, Bulgarian, Romanian, Italian, Portuguese, Russian
 
-### Command
+## Command
 `dict $lang1 $lang2 word_to_translate`
 
 You can omit `$lang1` and `$lang2` to just translate between german and english (both directions!).
@@ -30,3 +30,6 @@ Possible values for `$lang1` and `$lang2`:
 | it, ita | italian |
 | pt, por | portuguese |
 | ru, rus | russian |
+
+## Acknowledgement
+The dict.cc website parser is based on [rbarons](https://github.com/rbaron/dict.cc.py) work. Thanks for that!
