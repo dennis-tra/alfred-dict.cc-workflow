@@ -15,7 +15,7 @@ def main(wf):
     result = Dict(parser.search_string, parser.from_language, parser.to_language).translate()
 
     for translation in result.translation_tuples:
-        wf.add_item(translation[1], translation[0])
+        wf.add_item(translation[1], translation[0], valid="yes", arg=translation[0])
 
     if result.n_results == 0:
         wf.add_item('"' + parser.search_string + '" not found', generate_subtitle(parser))
