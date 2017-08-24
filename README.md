@@ -2,7 +2,7 @@
 
 [Alfred](https://www.alfredapp.com/) workflow to get translations from [dict.cc](http//dict.cc).
 
-If you like this workflow give this repo a star ⭐
+If you like the workflow give this repo a star ⭐
 
 ![Exmple animation](alfred-dict.cc-example.gif)
 
