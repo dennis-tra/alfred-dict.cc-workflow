@@ -7,7 +7,7 @@ If you like the workflow give this repo a star ⭐
 ![Exmple animation](alfred-dict.cc-example.gif)
 
 ## Download
-Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/v1.0.1) and download `Dict.cc.alfredworkflow`
+Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/1.0.2) and download `Dict.cc.alfredworkflow`
 
 ## Supported Languages
 English, German, French, Swedish, Spanish, Bulgarian, Romanian, Italian, Portuguese, Russian
