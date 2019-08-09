@@ -68,7 +68,7 @@ class Dict(object):
             "s": self.search_string
         }
 
-        return requests.get("http://" + subdomain + ".dict.cc", params=params, headers=headers)
+        return requests.get("https://" + subdomain + ".dict.cc", params=params, headers=headers)
 
     def parse_response(self, response_body):
 
