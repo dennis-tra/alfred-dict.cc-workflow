@@ -132,9 +132,9 @@
 		<key>230B7E17-DE58-409D-821F-A8F7228E7B6D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>160</integer>
+			<integer>240</integer>
 			<key>ypos</key>
-			<integer>120</integer>
+			<integer>130</integer>
 		</dict>
 		<key>38698C47-A0A4-4F32-8689-936879C43011</key>
 		<dict>
@@ -151,6 +151,15 @@
 			<integer>190</integer>
 		</dict>
 	</dict>
+	<key>variables</key>
+	<dict>
+		<key>from_language</key>
+		<string></string>
+		<key>to_language</key>
+		<string></string>
+	</dict>
+	<key>version</key>
+	<string></string>
 	<key>webaddress</key>
 	<string></string>
 </dict>

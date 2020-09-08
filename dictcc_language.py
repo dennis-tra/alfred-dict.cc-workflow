@@ -53,6 +53,10 @@ class Language:
 
     def __init__(self, language):
 
+        # If language is not None but "" set it to None
+        if not language:
+            language = None
+
         index = self.find_index(language)
 
         self.name = Language.names[index]
