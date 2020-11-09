@@ -1,5 +1,8 @@
 # Alfred dict.cc workflow
 
+[![Github All Releases](https://img.shields.io/github/downloads/dennis-tra/alfred-dict.cc-workflow/total.svg)]()
+
+
 [Alfred](https://www.alfredapp.com/) workflow to get **bidirectional** translations from [dict.cc](http//dict.cc).
 
 If you like the workflow give this repo a star ⭐ 
