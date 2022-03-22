@@ -206,3 +206,5 @@ fabric.properties
 ### Git ###
 *.orig
 .idea/
+
+dictcc
