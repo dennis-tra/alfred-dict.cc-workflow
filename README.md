@@ -14,7 +14,7 @@ And if it saves you time you may consider to
 
 ## Download
 
-Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/1.1.0) and download `Dict.cc.alfredworkflow`.
+Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/2.0.0-rc2) and download `Dict.cc.alfredworkflow`.
 
 ## Installation
 
@@ -104,10 +104,11 @@ to translate between french and english by default.
 Build the workflow:
 
 ```shell
-go build -o dictcc main.go
+GOOS=darwin GOARCH=arm64 go build -o dictcc_arm64 main.go
+GOOS=darwin GOARCH=amd64 go build -o dictcc_amd64 main.go
 ```
 
-Move the `dictcc` binary to the workflow folder. For development I'd recommend symlinking it.
+Move both binaries to the workflow folder. For development I'd recommend symlinking them.
 
 ## Support
 

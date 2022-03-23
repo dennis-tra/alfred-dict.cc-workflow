@@ -207,4 +207,5 @@ fabric.properties
 *.orig
 .idea/
 
-dictcc
+dictcc_*
+.DS_Store
