@@ -23,22 +23,13 @@ Just double click the `Dict.cc.alfredworkflow` file and Alfred should pick it up
 Then you need to tell MacOS that it's okay to run the included binary. You have the option to do the following:
 
 <details>
-<summary>Security & Privacy Setup</summary>
-
-Beware that the following configuration applies to all workflows you have currently installed and all future ones.
-
-<img src="./assets/security_and_privacy.png" alt="Security & Privacy Setup"/>
-
-</details>
-
-<details>
-<summary>Just allow this binary</summary>
+<summary>Give execute permissions to the included binaries</summary>
 
 Open the workflow directory
 
 <img src="./assets/open_workflow.png" alt="Open workflow directory"/>
 
-Right click on the `dictcc` binary and select `Open` in the pop up.
+Right click on the `dictcc_*` binary for your platform (Intel Macs `dictcc_amd64`, M1 Macs `dictcc_arm64`) and select `Open` in the pop up.
 
 <img src="./assets/open_binary.png" alt="Open dictcc binary"/>
 
@@ -48,9 +39,18 @@ Close all windows and you're good to go.
 
 </details>
 
+<details>
+<summary>Give execute permissions to Alfred in general</summary>
+
+Beware that the following configuration applies to all workflows you have currently installed and all future ones.
+
+<img src="./assets/security_and_privacy.png" alt="Security & Privacy Setup"/>
+
+</details>
+
 **Why do I need to do that?**
 
-Since MacOS Catalina, Apple does not allow running arbitrary binaries unless they are notarized. Developers can notarize their binaries if they pay for the Apple Developer Program which is around $100 per year. Since MacOS Monterey, Python 2 is no longer preinstalled and Python 3 only if you install the developer Tools. Hence, I decided to rewrite the Workflow in Go which spits out concise binaries.
+Since MacOS Catalina, Apple does not allow running arbitrary binaries unless they are notarized. Developers can notarize their binaries if they pay for the Apple Developer Program which is around $100 per year.
 
 ## Supported Languages
 
