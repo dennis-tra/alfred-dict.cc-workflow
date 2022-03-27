@@ -82,10 +82,30 @@ func (dcc *Dictcc) HandleQuery(args []string) {
 		dcc.handleError(err, query)
 	}
 
+	// Handle case where the result sets have different lengths (should not happen)
+	maxIdx := len(resultsLang1)
+	if len(resultsLang2) < maxIdx {
+		maxIdx = len(resultsLang2)
+	}
+
+	// filtered results slices
+	filResLang1 := []string{}
+	filResLang2 := []string{}
+	for i := 0; i < maxIdx; i++ {
+		if resultsLang1[i] == "" || resultsLang2[i] == "" {
+			continue
+		}
+		filResLang1 = append(filResLang1, resultsLang1[i])
+		filResLang2 = append(filResLang2, resultsLang2[i])
+	}
+	maxIdx = len(filResLang1)
+	resultsLang1 = filResLang1
+	resultsLang2 = filResLang2
+
 	// Apply heuristic to identify which results occurred more often
 	occurrencesLang1 := 0
 	occurrencesLang2 := 0
-	for i := 0; i < len(resultsLang1); i++ {
+	for i := 0; i < maxIdx; i++ {
 		if strings.ToLower(resultsLang1[i]) == strings.ToLower(query) {
 			occurrencesLang1 += 1
 		}
@@ -95,9 +115,9 @@ func (dcc *Dictcc) HandleQuery(args []string) {
 	}
 
 	if occurrencesLang2 < occurrencesLang1 {
-		dcc.sendResults(resultsLang1, resultsLang2)
+		dcc.prepareResults(resultsLang1, resultsLang2, maxIdx)
 	} else {
-		dcc.sendResults(resultsLang2, resultsLang1)
+		dcc.prepareResults(resultsLang2, resultsLang1, maxIdx)
 	}
 
 	dcc.Workflow.SendFeedback()
@@ -113,13 +133,9 @@ func (dcc *Dictcc) handleError(err error, query string) {
 	dcc.Workflow.SendFeedback()
 }
 
-// sendResults sends the translation results back to Alfred.
-func (dcc *Dictcc) sendResults(fromResults []string, toResults []string) {
-	maximumIdx := len(toResults)
-	if len(fromResults) < maximumIdx {
-		maximumIdx = len(fromResults)
-	}
-	for i := 0; i < maximumIdx; i++ {
+// prepareResults configures the result items.
+func (dcc *Dictcc) prepareResults(fromResults []string, toResults []string, maxIdx int) {
+	for i := 0; i < maxIdx; i++ {
 		dcc.Workflow.
 			NewItem(toResults[i]).
 			Subtitle(fromResults[i]).
@@ -177,12 +193,5 @@ func getResults(lang int, body string) ([]string, error) {
 		return nil, fmt.Errorf("is not one csv line")
 	}
 
-	results := []string{}
-	for _, word := range rows[0] {
-		if word == "" {
-			continue
-		}
-		results = append(results, word)
-	}
-	return results, nil
+	return rows[0], nil
 }
