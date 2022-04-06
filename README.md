@@ -70,7 +70,7 @@ Beware that the following configuration applies to all workflows you have curren
 
 ### Why do I need to do that?
 
-Since MacOS Catalina, Apple does not allow running arbitrary binaries unless they are notarized. Developers can notarize their binaries if they pay for the Apple Developer Program which is around $100 per year.
+Since [MacOS Catalina](https://developer.apple.com/news/?id=10032019a) Apple does not allow running arbitrary binaries unless they are notarized. Developers can notarize their binaries if they enroll for the Apple Developer Program which is around $100 per year. Since I am not enrolled, I can't notarize the binaries, and we need to live with the above inconvenience :/
 
 ## Supported Languages
 
