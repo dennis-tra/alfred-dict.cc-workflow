@@ -32,7 +32,7 @@ And if it saves you time you may consider to
 
 ## Download
 
-Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/2.0.0-rc2) and download `Dict.cc.alfredworkflow`.
+Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/2.0.0) and download `Dict.cc.alfredworkflow`.
 
 ## Installation
 
