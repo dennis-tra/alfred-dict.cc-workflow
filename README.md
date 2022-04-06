@@ -1,6 +1,7 @@
 # Alfred dict.cc workflow
 
 [![Github All Releases](https://img.shields.io/github/downloads/dennis-tra/alfred-dict.cc-workflow/total.svg)](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f55023ec0d7e998427c9/maintainability)](https://codeclimate.com/github/dennis-tra/alfred-dict.cc-workflow/maintainability)
 
 [Alfred](https://www.alfredapp.com/) workflow to get **bidirectional** translations from [dict.cc](http//dict.cc).
 
@@ -12,6 +13,23 @@ And if it saves you time you may consider to
 
 <a href="https://www.buymeacoffee.com/dennistra" target="__blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Download](#download)
+- [Installation](#installation)
+  - [Permissions](#permissions)
+  - [Why do I need to do that?](#why-do-i-need-to-do-that)
+- [Supported Languages](#supported-languages)
+- [Command](#command)
+- [Default Language Pair](#default-language-pair)
+- [Development](#development)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [Support](#support)
+- [Other Projects](#other-projects)
+- [License](#license)
+
 ## Download
 
 Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/2.0.0-rc2) and download `Dict.cc.alfredworkflow`.
@@ -20,7 +38,9 @@ Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/
 
 Just double click the `Dict.cc.alfredworkflow` file and Alfred should pick it up automatically.
 
-Then you need to tell MacOS that it's okay to run the included binary. You have the option to do the following:
+### Permissions
+
+Since [Catalina](https://developer.apple.com/news/?id=10032019a), you need to tell MacOS that it's okay to run the included binaries. For that, you have the following two options:
 
 <details>
 <summary>Give execute permissions to the included binaries</summary>
@@ -48,7 +68,7 @@ Beware that the following configuration applies to all workflows you have curren
 
 </details>
 
-**Why do I need to do that?**
+### Why do I need to do that?
 
 Since MacOS Catalina, Apple does not allow running arbitrary binaries unless they are notarized. Developers can notarize their binaries if they pay for the Apple Developer Program which is around $100 per year.
 
@@ -92,8 +112,8 @@ You should find the following two workflow environment variables:
 
 Assign both variables one of the above abbreviations (either the two letter or three letter form). In the screenshot above the configuration says
 
-* `from_language` - `fra`
-* `to_language` - `en`
+- `from_language` - `fra`
+- `to_language` - `en`
 
 to translate between french and english by default.
 
@@ -110,6 +130,14 @@ GOOS=darwin GOARCH=amd64 go build -o dictcc_amd64 main.go
 
 Move both binaries to the workflow folder. For development I'd recommend symlinking them.
 
+## Maintainers
+
+[@dennis-tra](https://github.com/dennis-tra).
+
+## Contributing
+
+Feel free to dive in! [Open an issue](https://github.com/dennis-tra/pcp/issues/new) or submit PRs.
+
 ## Support
 
 It would really make my day if you supported this project through [Buy Me A Coffee](https://www.buymeacoffee.com/dennistra).
@@ -121,6 +149,7 @@ You may be interested in one of my other projects:
 * [`pcp`](https://github.com/dennis-tra/pcp) - Command line peer-to-peer data transfer tool based on [libp2p](https://github.com/libp2p/go-libp2p).
 * [`image-stego`](https://github.com/dennis-tra/image-stego) - A novel way to image manipulation detection. Steganography-based image integrity - Merkle tree nodes embedded into image chunks so that each chunk's integrity can be verified on its own.
 * [`nebula-crawler`](https://github.com/dennis-tra/nebula-crawler) - A libp2p DHT crawler that also monitors the liveness and availability of peers. 🏆 Winner of the [DI2F Workshop Hackathon](https://research.protocol.ai/blog/2021/decentralising-the-internet-with-ipfs-and-filecoin-di2f-a-report-from-the-trenches) 🏆
+
 
 ## License
 
