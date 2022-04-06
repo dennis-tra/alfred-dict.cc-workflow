@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"net/url"
 	"regexp"
@@ -55,14 +54,17 @@ func (dcc *Dictcc) HandleQuery(args []string) {
 	// Try to parse language arguments from the user and merge them with preferences struct
 	// args will be stripped by the language arguments and will only contain the translation query
 	args = dcc.Preferences.Parse(args)
-	if len(args) == 0 {
+
+	// Join args to query string
+	query := strings.Join(args, " ")
+	query = strings.TrimSpace(query)
+
+	// Check for empty query
+	if query == "" {
 		dcc.Workflow.NewItem("Translate...").Subtitle(dcc.Preferences.String())
 		dcc.Workflow.SendFeedback()
 		return
 	}
-
-	// Join args to query string
-	query := strings.Join(args, " ")
 
 	// Query dict.cc for results
 	body, err := dcc.queryDictcc(query)
@@ -115,9 +117,9 @@ func (dcc *Dictcc) HandleQuery(args []string) {
 	}
 
 	if occurrencesLang2 < occurrencesLang1 {
-		dcc.prepareResults(resultsLang1, resultsLang2, maxIdx)
+		dcc.prepareResults(query, resultsLang1, resultsLang2, maxIdx)
 	} else {
-		dcc.prepareResults(resultsLang2, resultsLang1, maxIdx)
+		dcc.prepareResults(query, resultsLang2, resultsLang1, maxIdx)
 	}
 
 	dcc.Workflow.SendFeedback()
@@ -134,41 +136,58 @@ func (dcc *Dictcc) handleError(err error, query string) {
 }
 
 // prepareResults configures the result items.
-func (dcc *Dictcc) prepareResults(fromResults []string, toResults []string, maxIdx int) {
+func (dcc *Dictcc) prepareResults(query string, fromResults []string, toResults []string, maxIdx int) {
 	for i := 0; i < maxIdx; i++ {
-		dcc.Workflow.
+		it := dcc.Workflow.
 			NewItem(toResults[i]).
 			Subtitle(fromResults[i]).
 			Valid(true).
 			Arg(toResults[i])
+
+		dcc.addMod(it.Cmd(), query)
+		dcc.addMod(it.Alt(), query)
 	}
+}
+
+// addMod adds alternative metadata for the given modifier.
+func (dcc *Dictcc) addMod(mod *aw.Modifier, query string) {
+	u := dcc.dictccURL(query)
+	mod.Subtitle(fmt.Sprintf("Open dict.cc for %q in the browser...", query)).
+		Valid(true).
+		Arg(u.String())
 }
 
 // queryDictcc does an HTTP GET to dict.cc (with varying subdomains depending on the language pair) and
 // parses the HTML body to a string.
 func (dcc *Dictcc) queryDictcc(query string) (string, error) {
-	log.Println("Escaping query string", query)
-	q := url.Values{}
-	q.Set("s", query)
+	// Generate URL
+	u := dcc.dictccURL(query)
 
-	u := &url.URL{
-		Scheme:   "https",
-		Host:     dcc.Preferences.Subdomain() + ".dict.cc",
-		RawQuery: q.Encode(),
-	}
-
-	log.Println("HTTP GET " + u.String())
+	// Actually query dictcc
 	res, err := http.Get(u.String())
 	if err != nil {
 		return "", err
 	}
 
+	// Read complete HTML content
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return "", err
 	}
 
 	return string(body), nil
+}
+
+// dictccURL constructs the URL that we request.
+func (dcc *Dictcc) dictccURL(query string) url.URL {
+	q := url.Values{}
+	q.Set("s", query)
+
+	return url.URL{
+		Scheme:   "https",
+		Host:     dcc.Preferences.Subdomain() + ".dict.cc",
+		RawQuery: q.Encode(),
+	}
 }
 
 // getResults extracts the translation results from the website. There are two arrays that contain the results:
@@ -193,5 +212,10 @@ func getResults(lang int, body string) ([]string, error) {
 		return nil, fmt.Errorf("is not one csv line")
 	}
 
-	return rows[0], nil
+	results := make([]string, len(rows[0]))
+	for i, result := range rows[0] {
+		results[i] = strings.ReplaceAll(result, `\'`, "'")
+	}
+
+	return results, nil
 }
