@@ -1,0 +1,32 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-rc[0-9]+'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    name: Build workflow
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup go
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: 'go.mod'
+          check-latest: true
+          cache: true
+      - name: Build binaries
+        run: |
+          GOOS=darwin GOARCH=arm64 go build -o dictcc_arm64 main.go
+          GOOS=darwin GOARCH=amd64 go build -o dictcc_amd64 main.go
+      - name: Bundle workflow
+        run: |
+          mkdir dist
+          zip dist/Dict.cc.alfredworkflow dictcc_arm64 dictcc_amd64 assets/info.plist assets/icon.png
+      - name: Create or update the GitHub release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/Dict.cc.alfredworkflow
