@@ -230,13 +230,13 @@ fi</string>
 			<key>config</key>
 			<dict>
 				<key>acceptsfiles</key>
-				<true/>
+				<false/>
 				<key>acceptsmulti</key>
 				<integer>0</integer>
 				<key>acceptstext</key>
 				<true/>
 				<key>acceptsurls</key>
-				<true/>
+				<false/>
 				<key>name</key>
 				<string>Translate</string>
 			</dict>
