@@ -198,7 +198,7 @@
 				<key>runningsubtext</key>
 				<string>Please wait...</string>
 				<key>script</key>
-				<string>QUERY=$(iconv -f UTF8-MAC &lt;&lt;&lt;'{query}')
+				<string>QUERY=$(iconv -f utf-8 &lt;&lt;&lt;'{query}' || iconv -f UTF8-MAC &lt;&lt;&lt;'{query}')
 
 # Check for Apple Silicon
 if [[ $(uname -m) == 'arm64' ]]; then
