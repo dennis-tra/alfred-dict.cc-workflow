@@ -395,7 +395,7 @@ https://www.buymeacoffee.com/dennistra</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>2.0.0</string>
+	<string>2.1.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/dennis-tra/alfred-dict.cc-workflow</string>
 </dict>
