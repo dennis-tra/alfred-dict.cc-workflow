@@ -4,7 +4,8 @@ import (
 	"encoding/csv"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
+	"log"
 	"net/http"
 	"net/url"
 	"regexp"
@@ -127,6 +128,8 @@ func (dcc *Dictcc) HandleQuery(args []string) {
 
 // handleError displays a user-friendly Not-Found message and the actual error otherwise.
 func (dcc *Dictcc) handleError(err error, query string) {
+	log.Println("Error:", err, "Query:", query)
+
 	if !errors.Is(err, ErrNotFound) {
 		dcc.Workflow.FatalError(err)
 	}
@@ -163,14 +166,21 @@ func (dcc *Dictcc) queryDictcc(query string) (string, error) {
 	// Generate URL
 	u := dcc.dictccURL(query)
 
+	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
+	if err != nil {
+		return "", err
+	}
+
+	req.Header.Set("User-Agent", "alfred-dict.cc-workflow")
+
 	// Actually query dictcc
-	res, err := http.Get(u.String())
+	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return "", err
 	}
 
 	// Read complete HTML content
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return "", err
 	}

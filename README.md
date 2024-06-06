@@ -32,7 +32,7 @@ And if it saves you time you may consider to
 
 ## Download
 
-Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/v2.1.0) and download `Dict.cc.alfredworkflow`.
+Click [here](https://github.com/dennis-tra/alfred-dict.cc-workflow/releases/tag/v2.1.1) and download `Dict.cc.alfredworkflow`.
 
 ## Installation
 
@@ -146,9 +146,9 @@ It would really make my day if you supported this project through [Buy Me A Coff
 
 You may be interested in one of my other projects:
 
+* [`nebula`](https://github.com/dennis-tra/nebula-crawler) - A libp2p DHT crawler that also monitors the liveness and availability of peers. 🏆 Winner of the [DI2F Workshop Hackathon](https://research.protocol.ai/blog/2021/decentralising-the-internet-with-ipfs-and-filecoin-di2f-a-report-from-the-trenches) 🏆
 * [`pcp`](https://github.com/dennis-tra/pcp) - Command line peer-to-peer data transfer tool based on [libp2p](https://github.com/libp2p/go-libp2p).
 * [`image-stego`](https://github.com/dennis-tra/image-stego) - A novel way to image manipulation detection. Steganography-based image integrity - Merkle tree nodes embedded into image chunks so that each chunk's integrity can be verified on its own.
-* [`nebula-crawler`](https://github.com/dennis-tra/nebula-crawler) - A libp2p DHT crawler that also monitors the liveness and availability of peers. 🏆 Winner of the [DI2F Workshop Hackathon](https://research.protocol.ai/blog/2021/decentralising-the-internet-with-ipfs-and-filecoin-di2f-a-report-from-the-trenches) 🏆
 
 
 ## License
